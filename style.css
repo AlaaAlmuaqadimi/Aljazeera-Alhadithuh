@@ -590,3 +590,53 @@ button, input, textarea{ font-family:inherit; }
   html{ scroll-behavior:auto; }
   *{ transition:none !important; }
 }
+
+
+@media (max-width: 720px){
+  /* مهم: باش absolute يتثبت تحت الهيدر صح */
+  .nav{ position: relative; }
+
+  .nav__toggle{ display: inline-flex; }
+
+  .nav__menu{
+    position: absolute;
+
+    /* بدل top: 78px (اللي يخرب) */
+    top: calc(100% + 10px);
+
+    /* Dropdown على اليمين */
+    right: 0;
+    left: auto;
+
+    /* عرض منطقي في الموبايل */
+    width: min(360px, calc(100vw - 32px));
+
+    /* فوق كل شيء */
+    z-index: 9999;
+
+    /* الشكل */
+    background: rgba(255,255,255,.96); /* لو ثيم أبيض */
+    /* لو ثيم غامق استبدل بالسطر التالي:
+       background: rgba(11,18,32,.88);
+    */
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 24px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.20);
+
+    padding: 12px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .nav__menu.open{ display: flex; }
+
+  .nav__link{
+    padding: 12px 10px;
+    border-radius: 14px;
+    background: rgba(229,231,235,.70);
+  }
+
+  .nav__link.active::after{ display:none; }
+}
