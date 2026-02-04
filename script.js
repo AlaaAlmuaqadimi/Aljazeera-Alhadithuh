@@ -29,6 +29,11 @@ document.addEventListener("click", (e) => {
   if (!inside) closeMenu();
 });
 
+/* مهم: لو كبّرت الشاشة بعد ما كانت المنيو مفتوحة */
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 720) closeMenu();
+});
+
 /* Active section highlight */
 const sections = ["home","services","why","about","faq","contact"]
   .map(id => document.getElementById(id))
